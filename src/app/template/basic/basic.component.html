@@ -1,0 +1,92 @@
+<h3>Template: Básicos</h3>
+<hr>
+
+<section class="row">
+    <article class="col">
+
+        <form (ngSubmit)="save()" #productForm="ngForm">
+
+            <!-- Producto -->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Producto</label>
+                <div class="col-sm-9">
+
+                    <input [ngModel]="initialValues.product" name="product" type="text" class="form-control" required
+                        minlength="3" placeholder="Nombre del producto" autofocus autocomplete="off">
+
+                    <span *ngIf="isProductInvalid()" class="form-text text-danger">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Debe ser de 3 letras.
+                    </span>
+                </div>
+            </div>
+
+            <!-- Precio -->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Precio</label>
+                <div class="col-sm-9">
+                    <input [ngModel]="initialValues.price" name="price" type="number" class="form-control" required
+                        min="0" placeholder="Precio del producto" autocomplete="off">
+
+                    <span *ngIf="isPriceInvalid()" class="form-text text-danger">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Debe ser mayor o igual a 0.
+                    </span>
+                </div>
+            </div>
+
+            <!-- Existencias -->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Existencias</label>
+                <div class="col-sm-9">
+                    <input [ngModel]="initialValues.stock" name="stock" type="number" class="form-control"
+                        placeholder="Existencias del producto" autocomplete="off" required appCustomMin [minimo]="0">
+                </div>
+            </div>
+
+            <!-- Guardar formulario -->
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary float-end"
+                        [disabled]="productForm.invalid || isPriceInvalid()">
+                        <i class="fas fa-save"></i>
+                        Guardar
+                    </button>
+                </div>
+            </div>
+
+
+        </form>
+
+    </article>
+</section>
+
+<section class="row">
+    <div class="col">
+        <span>
+            <strong>Valid: </strong>
+            <code>{{productForm.valid}}</code>
+        </span>
+        <br>
+        <span>
+            <strong>Pristine: </strong>
+            <code>{{productForm.pristine}}</code>
+        </span>
+        <br>
+        <span>
+            <strong>Touched: </strong>
+            <code>{{productForm.touched}}</code>
+        </span>
+        <br>
+        <span>
+            <strong>Value:</strong>
+            <pre>{{productForm.value | json}}</pre>
+        </span>
+
+        <br>
+        <span>
+            <strong>Value:</strong>
+            <pre>{{productForm.controls.stock?.errors | json}}</pre>
+        </span>
+    </div>
+</section>
