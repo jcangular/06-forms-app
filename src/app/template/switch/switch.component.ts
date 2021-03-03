@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-switch',
-  templateUrl: './switch.component.html',
-  styleUrls: ['./switch.component.css']
+    selector: 'app-switch',
+    templateUrl: './switch.component.html',
+    styleUrls: ['./switch.component.css']
 })
-export class SwitchComponent implements OnInit {
+export class SwitchComponent {
 
-  constructor() { }
+    @ViewChild('form') form!: NgForm;
 
-  ngOnInit(): void {
-  }
+    person = {
+        gender: '',
+        notification: true,
+        theme: 'light'
+    };
+
+    condition = false;
+
+    public submit(): void {
+        console.log(this.form.value);
+    }
 
 }
