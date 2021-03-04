@@ -4,17 +4,16 @@
 <div class="row">
     <div class="col">
 
-        <form>
+        <form autocomplete="off" [formGroup]="form" (ngSubmit)="save()">
 
             <!-- Producto -->
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Producto</label>
                 <div class="col-sm-9">
 
-                    <input type="text" class="form-control" placeholder="Nombre del producto" autofocus
-                        autocomplete="off">
+                    <input type="text" class="form-control" placeholder="Nombre del producto" formControlName="name">
 
-                    <span class="form-text text-danger">
+                    <span *ngIf="isInvalid('name')" class="form-text text-danger">
                         <i class="fas fa-exclamation-circle"></i>
                         Debe ser de 3 letras.
                     </span>
@@ -25,9 +24,9 @@
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Precio</label>
                 <div class="col-sm-9">
-                    <input type="number" class="form-control" placeholder="Precio del producto" autocomplete="off">
+                    <input type="number" class="form-control" placeholder="Precio del producto" formControlName='price'>
 
-                    <span class="form-text text-danger">
+                    <span *ngIf="isInvalid('price')" class="form-text text-danger">
                         <i class="fas fa-exclamation-circle"></i>
                         Debe ser mayor o igual a 0.
                     </span>
@@ -38,7 +37,13 @@
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Existencias</label>
                 <div class="col-sm-9">
-                    <input type="number" class="form-control" placeholder="Existencias del producto" autocomplete="off">
+                    <input type="number" class="form-control" placeholder="Existencias del producto"
+                        formControlName="stock">
+
+                    <span *ngIf="isInvalid('stock')" class="form-text text-danger">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Debe ser mayor o igual a 0.
+                    </span>
                 </div>
             </div>
 
@@ -57,32 +62,33 @@
     </div>
 </div>
 
-<!-- <section class="row">
+<section class="row">
     <div class="col">
         <span>
             <strong>Valid: </strong>
-            <code>{{productForm.valid}}</code>
+            <code>{{form.valid}}</code>
         </span>
         <br>
         <span>
             <strong>Pristine: </strong>
-            <code>{{productForm.pristine}}</code>
+            <code>{{form.pristine}}</code>
         </span>
         <br>
         <span>
             <strong>Touched: </strong>
-            <code>{{productForm.touched}}</code>
+            <code>{{form.touched}}</code>
         </span>
         <br>
         <span>
             <strong>Value:</strong>
-            <pre>{{productForm.value | json}}</pre>
+            <pre>{{form.value | json}}</pre>
+        </span>
+        <br>
+        <span>
+            <strong>Price:</strong>
+            <pre>{{form.controls.price.errors | json}}</pre>
         </span>
 
-        <br>
-        <span>
-            <strong>Value:</strong>
-            <pre>{{productForm.controls.stock?.errors | json}}</pre>
-        </span>
+
     </div>
-</section> -->
+</section>
