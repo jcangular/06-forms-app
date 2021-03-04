@@ -1,1 +1,88 @@
-<p>basic works!</p>
+<h3>Reactive: <small>Básico</small></h3>
+<hr>
+
+<div class="row">
+    <div class="col">
+
+        <form>
+
+            <!-- Producto -->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Producto</label>
+                <div class="col-sm-9">
+
+                    <input type="text" class="form-control" placeholder="Nombre del producto" autofocus
+                        autocomplete="off">
+
+                    <span class="form-text text-danger">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Debe ser de 3 letras.
+                    </span>
+                </div>
+            </div>
+
+            <!-- Precio -->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Precio</label>
+                <div class="col-sm-9">
+                    <input type="number" class="form-control" placeholder="Precio del producto" autocomplete="off">
+
+                    <span class="form-text text-danger">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Debe ser mayor o igual a 0.
+                    </span>
+                </div>
+            </div>
+
+            <!-- Existencias -->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Existencias</label>
+                <div class="col-sm-9">
+                    <input type="number" class="form-control" placeholder="Existencias del producto" autocomplete="off">
+                </div>
+            </div>
+
+            <!-- Guardar formulario -->
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary float-end">
+                        <i class="fas fa-save"></i>
+                        Guardar
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<!-- <section class="row">
+    <div class="col">
+        <span>
+            <strong>Valid: </strong>
+            <code>{{productForm.valid}}</code>
+        </span>
+        <br>
+        <span>
+            <strong>Pristine: </strong>
+            <code>{{productForm.pristine}}</code>
+        </span>
+        <br>
+        <span>
+            <strong>Touched: </strong>
+            <code>{{productForm.touched}}</code>
+        </span>
+        <br>
+        <span>
+            <strong>Value:</strong>
+            <pre>{{productForm.value | json}}</pre>
+        </span>
+
+        <br>
+        <span>
+            <strong>Value:</strong>
+            <pre>{{productForm.controls.stock?.errors | json}}</pre>
+        </span>
+    </div>
+</section> -->

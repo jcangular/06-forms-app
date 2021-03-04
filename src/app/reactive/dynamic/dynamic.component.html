@@ -1,1 +1,61 @@
-<p>dynamic works!</p>
+<h3>Reactive: <small>Dinámicos</small></h3>
+<hr>
+
+<form>
+
+    <!-- Nombre -->
+    <div class="row">
+        <label class="col-sm-3 col-form-label">Nombre</label>
+        <div class="col-sm-9">
+            <input class="form-control" type="text" placeholder="Nombre de la persona" autocomplete="off" autofocus>
+            <span class="form-text text-danger">
+                <i class="fas fa-exclamation-circle"></i>
+                ¡El nombre es requerido!
+            </span>
+        </div>
+    </div>
+
+    <!-- Agregar juegos favoritos -->
+    <div class="row mt-3">
+        <label class="col-sm-3 col-form-label">Juegos</label>
+        <div class="col-sm-9 ">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Nombre del juego..." autocomplete="off">
+                <button type="button" class="btn btn-outline-secondary">Agregar</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Lista de Juegos Favoritos -->
+    <div class="row mt-3">
+        <label class="col-sm-3 col-form-label">Favoritos</label>
+        <div class="col-sm-9">
+
+            <!-- <div *ngFor="let game of person.games; let i = index" class="input-group mb-1">
+                <input type="text" class="form-control " name="game{{game.id}}" [(ngModel)]="game.name">
+                <button type="button" class="btn btn-outline-danger" (click)="removeGame(i)">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div> -->
+
+
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-sm">
+            <button class="btn btn-primary float-end" type="button">Guardar</button>
+        </div>
+    </div>
+
+</form>
+
+<section class="row">
+    <div class="col">
+        <span>
+            <strong>Persona:</strong>
+            <!-- <pre>{{person | json}}</pre> -->
+        </span>
+    </div>
+</section>
