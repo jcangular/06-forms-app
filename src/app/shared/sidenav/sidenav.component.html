@@ -13,3 +13,12 @@
         {{item.label}}
     </li>
 </ul>
+
+
+<h3 class="mt-4">Válidaciones</h3>
+<hr>
+<ul class="list-group">
+    <li *ngFor="let item of authMenu" [routerLink]="[item.path]" routerLinkActive="active" class="list-group-item">
+        {{item.label}}
+    </li>
+</ul>

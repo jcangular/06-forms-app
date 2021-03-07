@@ -24,4 +24,9 @@ export class SidenavComponent {
         { label: 'Switches', path: 'reactive/switch' },
     ];
 
+    authMenu: MenuItem[] = [
+        { label: 'Inicio Sesión', path: 'auth/login' },
+        { label: 'Registrarse', path: 'auth/register' }
+    ];
+
 }
