@@ -1,1 +1,74 @@
-<p>register works!</p>
+<h3>Validaciones Reactivas</h3>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <form [formGroup]="form" (ngSubmit)="register()" autocomplete="off">
+
+            <!-- Nombre -->
+            <div class="row">
+                <label class="col-sm-4 col-form-label">Nombre</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="Nombre y Apellido..." formControlName="name">
+                    <small *ngIf="isInvalid('name')" class="text-danger">
+                        Debe incluir nombre y apellido.
+                    </small>
+                </div>
+            </div>
+
+            <!-- Correo Electrónico -->
+            <div class="row mt-2">
+                <label class="col-sm-4 col-form-label">Correo</label>
+                <div class="col-sm-8">
+                    <input type="email" class="form-control" placeholder="Correo electrónico...">
+
+                </div>
+            </div>
+
+            <!-- Nombre de usuario -->
+            <div class="row mt-2">
+                <label class="col-sm-4 col-form-label">Usuario</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" placeholder="Usuario...">
+
+                </div>
+            </div>
+
+            <!-- Contraseña -->
+            <div class="row mt-2">
+                <label class="col-sm-4 col-form-label">Contraseña</label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" placeholder="Contraseña...">
+
+                </div>
+            </div>
+
+            <!-- Confirmar contraseña -->
+            <div class="row mt-2">
+                <label class="col-sm-4 col-form-label">Confirmar</label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" placeholder="Confirmar contraseña...">
+
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col">
+                    <button class="btn btn-success float-end" type="submit">Registarse</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <label>Válido</label>
+        <pre>{{form.valid }}</pre>
+        <label>Formulario</label>
+        <pre>{{form.value | json}}</pre>
+        <label>Nombre</label>
+        <pre>{{form.controls.name.errors | json}}</pre>
+    </div>
+</div>
