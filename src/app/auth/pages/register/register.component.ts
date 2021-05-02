@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ValidatorService } from '@shared/validators/validator.service';
 
 @Component({
     selector: 'app-register',
@@ -8,16 +9,17 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class RegisterComponent implements OnInit {
 
-    private readonly nameRegExp = '[A-z\u00C0-\u017F]+ [A-z\u00C0-\u017F]+';
-    private readonly emailRegExp = '^[a-zA-Z][a-zA-Z0-9_.]+@[a-zA-Z]+(\\.[a-z]{2,3}){1,3}$';
 
     form: FormGroup = this.fb.group({
-        name: ['', [Validators.required, Validators.pattern(this.nameRegExp)]],
-        email: ['', [Validators.required, Validators.pattern(this.emailRegExp)]],
-        username: ['', [Validators.required, this.noRootName]]
+        name: ['', [Validators.required, Validators.pattern(this.vs.nameRegExp)]],
+        email: ['', [Validators.required, Validators.pattern(this.vs.emailRegExp)]],
+        username: ['', [Validators.required, this.vs.noRootName]]
     });
 
-    constructor(private fb: FormBuilder) { }
+    constructor(
+        private fb: FormBuilder,
+        private vs: ValidatorService
+    ) { }
 
     ngOnInit(): void {
         this.form.reset({
@@ -38,14 +40,6 @@ export class RegisterComponent implements OnInit {
             return;
         }
         console.log(this.form);
-    }
-
-    public noRootName(control: FormControl): { canNotBeRoot: boolean; } | null {
-        const value: string = control.value?.trim().toLowerCase();
-        if (value === 'root') {
-            return { canNotBeRoot: true };
-        }
-        return null;
     }
 
 }
